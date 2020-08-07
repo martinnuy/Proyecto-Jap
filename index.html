@@ -51,6 +51,10 @@
       margin-bottom: -30px;
     }
 
+
+    .google{
+      display: inline-block;
+    }
   
   </style>
 </head>
@@ -76,7 +80,9 @@
       </div>
       <button class="btn btn-lg btn-primary btn-block" type="submit" id="login" onclick="return beforeLogin();">Iniciar Sesión</button>
 
-      <div class="g-signin2" data-onsuccess="onSignIn"></div>
+      <div class="container">
+        <div class="g-signin2 google mt-4" data-onsuccess="onSignIn" id="google"></div>
+      </div>
 
       <p class="mt-5 mb-3 text-muted">©2020</p>
     </form>

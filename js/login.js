@@ -1,14 +1,6 @@
 let loginButton = document.getElementById("login");
 let inputEmail = document.getElementById("inputEmail");
 let inputPassword = document.getElementById("inputPassword");
-let googleButon = document.getElementsByClassName("abcRioButton");
-
-function googleButStyle(){
-    googleButon.classList.add("mt-3 mx-auto");
-    console.log("vapai");
-}
-
-googleButStyle();
 
 
 let prueba = null;
