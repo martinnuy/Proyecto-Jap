@@ -6,6 +6,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
+  <meta name = "google-signin-client_id" content = "402054731458-t37g8chhpgpbfdc8gg892aer07fm7pk0.apps.googleusercontent.com">
   <title>eMercado - Todo lo que busques está aquí</title>
 
   <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
@@ -64,9 +65,10 @@
     <form class="form-signin">
       <h1 class="h3 mb-3 mt-5 font-weight-normal">Inicio de Sesión</h1>
       <label for="inputEmail" class="sr-only">Email address</label>
-      <input type="email" id="inputEmail" class="form-control" placeholder="Correo Electronico" required="" autofocus="">
+      <input type="email" id="inputEmail" class="form-control mb-1" placeholder="Correo Electronico" required="" autofocus="">
       <label for="inputPassword" class="sr-only">Password</label>
       <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required="">
+      <div class="g-signin2" data-onsuccess="onSignIn"></div>
       <div class="checkbox mb-3">
         <label>
           <input type="checkbox" value="remember-me"> Recordar contraseña
@@ -79,5 +81,6 @@
 
   <script src="js/init.js"></script>
   <script src="js/login.js"></script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script><script src="https://apis.google.com/js/platform.js" async defer></script>
 </body>
 </html>
