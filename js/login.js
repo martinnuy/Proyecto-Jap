@@ -1,6 +1,14 @@
 let loginButton = document.getElementById("login");
 let inputEmail = document.getElementById("inputEmail");
 let inputPassword = document.getElementById("inputPassword");
+let googleButon = document.getElementsByClassName("abcRioButton ");
+
+function googleButStyle(){
+    googleButon.className += "mt-3 mx-auto"
+}
+
+googleButStyle();
+
 
 let prueba = null;
 let expReg = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
@@ -24,6 +32,8 @@ function beforeLogin(){
  
     
 }
+
+
 
 
 
