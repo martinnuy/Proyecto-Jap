@@ -12,6 +12,7 @@
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
+    <meta name = "google-signin-client_id" content = "402054731458-t37g8chhpgpbfdc8gg892aer07fm7pk0.apps.googleusercontent.com">
   </head>
   <body>
     <nav class="site-header sticky-top py-1 bg-dark">
@@ -100,10 +101,12 @@
         </p>
         <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
         <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
+        <button onclick="signOut();">Cerrar sesion</button>
       </div>
     </footer>
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/init.js"></script>
+    <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
   </body>
 </html>

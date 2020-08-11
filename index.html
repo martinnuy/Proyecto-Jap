@@ -44,7 +44,20 @@
       max-width: 330px;
       padding: 15px;
       margin: auto;
+
+      animation: fadeIn 2s;
     
+    }
+
+    @keyframes fadeIn{
+      from{
+        opacity: 0;
+        transform: translate(0px, -100px);
+      }
+      to{
+        opacity: 1;
+        transform: translate(0px, 0px);
+      }
     }
 
     .avatar{
@@ -81,7 +94,7 @@
       <button class="btn btn-lg btn-primary btn-block" type="submit" id="login" onclick="return beforeLogin();">Iniciar Sesión</button>
 
       <div class="container">
-        <div class="g-signin2 google mt-4" data-onsuccess="onSignIn" id="google"></div>
+        <div class="g-signin2 google mt-4" data-onsuccess="onSignIn" id="google" data-redirecturi="https://localhost:8080/inicio.html"></div>
       </div>
 
       <p class="mt-5 mb-3 text-muted">©2020</p>

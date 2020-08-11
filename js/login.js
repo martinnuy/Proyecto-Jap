@@ -26,7 +26,13 @@ function beforeLogin(){
     
 }
 
+function onSignIn(){
+  
+    window.location.href = "inicio.html"
 
+}
+
+  
 
 
 
