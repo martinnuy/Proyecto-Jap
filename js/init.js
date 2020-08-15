@@ -7,6 +7,10 @@ const PRODUCT_INFO_COMMENTS_URL = "https://japdevdep.github.io/ecommerce-api/pro
 const CART_INFO_URL = "https://japdevdep.github.io/ecommerce-api/cart/987.json";
 const CART_BUY_URL = "https://japdevdep.github.io/ecommerce-api/cart/buy.json";
 
+
+
+
+
 var showSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "block";
 }
@@ -40,10 +44,30 @@ var getJSONData = function(url){
     });
 }
 
+
+function negarAcceso(){
+  var concederAcceso = localStorage.getItem('Acceso');
+  if(concederAcceso != "Ok"){
+    window.location.href = "index.html";
+  }
+}
+
+
+
+function onSignIn(){
+
+  localStorage.setItem("Acceso", "Ok");
+  window.location.href = "inicio.html"
+
+
+}
+
+
 function signOut() {
   var auth2 = gapi.auth2.getAuthInstance();
   auth2.signOut().then(function () {
     console.log('User signed out.');
+    localStorage.removeItem('Acceso');
     window.location.href = "index.html";
   });
 }
@@ -58,6 +82,7 @@ function onLoad() {
 function sigOutDelay(){
   onLoad();
   var tiempo = setTimeout(signOut, 200)
+  
 }
 
 

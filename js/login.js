@@ -14,6 +14,7 @@ function beforeLogin(){
    
    if(esValido && inputPassword.value){
 
+    localStorage.setItem("Acceso", "Ok");
     window.location.href = "inicio.html";
 
     return false;
@@ -26,11 +27,7 @@ function beforeLogin(){
     
 }
 
-function onSignIn(){
-  
-    window.location.href = "inicio.html"
 
-}
 
   
 
