@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <title>eMercado - Todo lo que busques está aquí</title>
+    <meta name = "google-signin-client_id" content = "402054731458-t37g8chhpgpbfdc8gg892aer07fm7pk0.apps.googleusercontent.com">
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
@@ -37,6 +38,7 @@
             <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
             <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
             <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
+            <a class="py-2 d-none d-md-inline-block" href="#" onclick="sigOutDelay();">Cerrar Sesion</a>
         </div>
     </nav>
       <div class="container">
@@ -214,8 +216,10 @@
       <div id="spinner-wrapper"><div class="lds-ring"><div></div><div></div><div></div><div></div></div></div>
       <script src="js/jquery-3.4.1.min.js"></script>
       <script src="js/bootstrap.bundle.min.js"></script>
-      <script src="js/dropzone.js"></script>
       <script src="js/init.js"></script>
+      <script src="js/dropzone.js"></script>
       <script src="js/sell.js"></script>
+      <script src="js/negarAcceso.js"></script>
+      <script src="https://apis.google.com/js/platform.js" async defer></script>
     </body>
 </html>
