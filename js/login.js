@@ -13,8 +13,10 @@ function beforeLogin(){
     let esValido = expReg.test(prueba);
    
    if(esValido && inputPassword.value){
+    var userEmailNormal = document.getElementById("inputEmail").value;
 
     localStorage.setItem("Acceso", "Ok");
+    localStorage.setItem("EmailNormal", userEmailNormal);
     window.location.href = "inicio.html";
 
     return false;

@@ -50,6 +50,12 @@ var getJSONData = function(url){
 
 
 function onSignIn(){
+  const googleUser = gapi.auth2.getAuthInstance().currentUser.get();
+  var profile = googleUser.getBasicProfile();
+  localStorage.setItem('ID:' , profile.getId()); // Do not send to your backend! Use an ID token instead.
+  localStorage.setItem('Name:' , profile.getName());
+  localStorage.setItem('Image URL:' , profile.getImageUrl());
+  localStorage.setItem('Email:' , profile.getEmail()); // This is null if the 'email' scope is not present.
 
   localStorage.setItem("Acceso", "Ok");
   window.location.href = "inicio.html"
@@ -63,6 +69,12 @@ function signOut() {
   auth2.signOut().then(function () {
     console.log('User signed out.');
     localStorage.removeItem('Acceso');
+    localStorage.removeItem('UsuarioNormal'); 
+    localStorage.removeItem('ID:' ); 
+    localStorage.removeItem('Name:');
+    localStorage.removeItem('Image URL:');
+    localStorage.removeItem('Email:'); 
+    localStorage.removeItem("EmailNormal");
     window.location.href = "index.html";
   });
 }
@@ -80,7 +92,35 @@ function sigOutDelay(){
   
 }
 
+function userInfo(){
+  var normalLogin = localStorage.getItem("EmailNormal");
 
+        if(normalLogin != null){
+          var userName = localStorage.getItem("EmailNormal");
+          var foto = document.getElementById("userAvatar");
+          var userButton = document.getElementById("dropdownMenuButton");
+
+
+          foto.setAttribute("src", "./img/avatar2.png");
+          userButton.innerHTML = userName;
+        }else{
+
+            var foto = document.getElementById("userAvatar");
+            var userButton = document.getElementById("dropdownMenuButton");
+            var userName = localStorage.getItem('Name:');
+            var profilePhoto =  localStorage.getItem('Image URL:');
+            var userEmail =  localStorage.getItem('Email:'); 
+
+
+        foto.setAttribute("src", profilePhoto);
+        userButton.innerHTML = userName;
+
+ }
+
+
+}
+
+userInfo();
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los

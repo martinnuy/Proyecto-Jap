@@ -24,7 +24,16 @@
       <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
       <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
-      <a class="py-2 d-none d-md-inline-block" href="#" onclick="sigOutDelay();">Cerrar Sesion</a>
+      <div class="dropdown">
+        <img src="./img/avatar2.png" class="rounded-circle" alt="" width="42" height="42" id="userAvatar">
+        <button class="btn btn-secondary dropdown-toggle " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Usuario
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="my-profile.html">Mi Perfil</a>     
+          <a class="dropdown-item" href="#" onclick="sigOutDelay();">Cerrar Sesion</a>
+        </div>
+      </div>
     </div>
   </nav>
   <main role="main">
