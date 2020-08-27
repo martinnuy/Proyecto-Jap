@@ -92,24 +92,27 @@ function sortAndShowCategories(sortCriteria, categoriesArrayS){
 }
 
 
-//buscador
+//Buscador
 
 const formulario = document.getElementById("formulario");
-const botonForm = document.getElementById("botonForm");
 
 const filtrar = ()=>{
     const texto = formulario.value.toLowerCase();
     var lista = [];
-    for(let autos of categoriesArray){
+    var sinResultado = [];
+    for(let autos of categoriesArrayClean){
         let nombre = autos.name.toLowerCase();
         let autoDesc = autos.description.toLowerCase();
+        let todo = nombre + " " + autoDesc;
         
-        if((autoDesc.indexOf(texto) !== -1) || (nombre.indexOf(texto) !== -1)){
+        if(todo.indexOf(texto) !== -1){
             
             lista.push(autos);
             categoriesArray = lista;
             
             showCategoriesList(categoriesArray);
+        }else{
+            sinResultado.push(autos);
         }
     }
 
@@ -117,6 +120,8 @@ const filtrar = ()=>{
         categoriesArray = categoriesArrayClean;    
         showCategoriesList(categoriesArray);
 
+    }else if(sinResultado.length === 4){
+        document.getElementById("container").innerHTML = "No encontrado";
     }
 }
 
