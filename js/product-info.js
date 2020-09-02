@@ -35,7 +35,7 @@ function showProducts (array){
 
       <dt>Categoría</dt>
       <dd>
-        <p id="productCategory"><a href="category-info.html"></a></p>
+        <p id="productCategory"><a href="category-info.html">`+productToShow.category+`</a></p>
       </dd>
 
       <dt>Cantidad de vendidos</dt>
@@ -48,25 +48,25 @@ function showProducts (array){
         <div class="row text-center text-lg-left pt-2" id="productImagesGallery">
       <div class="col-lg-3 col-md-4 col-6">
           <div class="d-block mb-4 h-100">
-              <img class="img-fluid img-thumbnail" src="img/cat1.jpg" alt="">
+              <img class="img-fluid img-thumbnail" src="`+productToShow.images[0]+`" alt="">
           </div>
       </div>
       
       <div class="col-lg-3 col-md-4 col-6">
           <div class="d-block mb-4 h-100">
-              <img class="img-fluid img-thumbnail" src="img/car1.jpg" alt="">
+              <img class="img-fluid img-thumbnail" src="`+productToShow.images[1]+`" alt="">
           </div>
       </div>
       
       <div class="col-lg-3 col-md-4 col-6">
           <div class="d-block mb-4 h-100">
-              <img class="img-fluid img-thumbnail" src="img/car2.jpg" alt="">
+              <img class="img-fluid img-thumbnail" src="`+productToShow.images[2]+`" alt="">
           </div>
       </div>
       
       <div class="col-lg-3 col-md-4 col-6">
           <div class="d-block mb-4 h-100">
-              <img class="img-fluid img-thumbnail" src="img/car3.jpg" alt="">
+              <img class="img-fluid img-thumbnail" src="`+productToShow.images[3]+`" alt="">
           </div>
       </div>
       </div>
@@ -84,7 +84,7 @@ document.getElementById("container").innerHTML = productContentToAppend;
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
 
-    getJSONData(PRODUCTS_URL).then(function(resultObj){
+    getJSONData(PRODUCT_INFO_URL_NEW).then(function(resultObj){
         if (resultObj.status === "ok")
         {
             productsArray = resultObj.data;

@@ -17,8 +17,8 @@ function showCategoriesList(array){
         ((maxCount == undefined) || (maxCount != undefined && parseInt(category.cost) <= maxCount))){
 
             htmlContentToAppend += `
-            <div class="list-group-item list-group-item-action" id="product`+i+`">
-                <div class="row">
+            <div class="list-group-item list-group-item-action">
+                <div class="row" id="product`+i+`">
                     <div class="col-3">
                         <img src="` + category.imgSrc + `" alt="` + category.desc + `" class="img-thumbnail">
                     </div>
@@ -39,7 +39,7 @@ function showCategoriesList(array){
         
         document.getElementById("container").innerHTML = htmlContentToAppend;
         //Agregando links a cada producto
-        setTimeout(function(){document.getElementById("product"+i).addEventListener("click", function(){window.location.href = "product-info"+i+".html"});}, 200);
+        setTimeout(function(){document.getElementById("product"+i).addEventListener("click", function(){window.location.href = "product-info"+category.id+".html"});}, 200);
 
     }
 }
@@ -141,8 +141,14 @@ document.addEventListener("DOMContentLoaded", function (e) {
     getJSONData(PRODUCTS_URL).then(function(resultObj){
         if (resultObj.status === "ok")
         {
-            categoriesArray = resultObj.data;
-            categoriesArrayClean = resultObj.data;
+            editData = resultObj.data;
+            for(let i = 0; i < editData.length; i++){
+                editData[i].id = i ;
+
+            }
+
+            categoriesArray = editData;
+            categoriesArrayClean = editData;
             //Muestro las categorías ordenadas
             showCategoriesList(categoriesArray);
             
