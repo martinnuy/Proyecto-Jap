@@ -1,5 +1,6 @@
-let URLActual = window.location.pathname;
-let productsPages = ["/product-info0.html", "/product-info1.html", "/product-info2.html", "/product-info3.html"];
+let getURL =  window.location.pathname.split("/");
+let URLActual = getURL[getURL.length-1];
+let productsPages = ["product-info0.html", "product-info1.html", "product-info2.html", "product-info3.html"];
 let productSelection = null;
 let productsArray = [];
 
@@ -89,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function(e){
         {
             productsArray = resultObj.data;
             //Muestro el producto
-            setTimeout(function(){showProducts (productsArray)}, 200);
+            showProducts (productsArray);
             
         }
 
