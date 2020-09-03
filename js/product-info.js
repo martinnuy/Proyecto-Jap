@@ -3,6 +3,7 @@ let URLActual = getURL[getURL.length-1];
 let productsPages = ["product-info0.html", "product-info1.html", "product-info2.html", "product-info3.html"];
 let productSelection = null;
 let productsArray = [];
+let comentsArray = [];
 
 
 for(let i = 0; i < productsPages.length; i++){
@@ -11,16 +12,11 @@ for(let i = 0; i < productsPages.length; i++){
     }
 }
 
-function showProducts (array){
+function showProducts (array, coments){
     let productToShow = array[productSelection];
 
     let productContentToAppend = `
-<div class="text-center p-4">
-      <h2>Descripción de la categoría</h2>
-      <p class="lead">Encontrarás aquí toda la información de la categoría seleccionada.</p>
-      <p class="small alert-warning py-3"><strong>Nota: </strong>por simplicidad, cualquiera sea la categoría
-        seleccionada previamente, siempre se visualizará la presente: <strong>Autos</strong>.</p>
-    </div>
+
     <h3 id="productName">`+ productToShow.name +`</h3>
     <hr class="my-3">
     <dl>
@@ -73,10 +69,69 @@ function showProducts (array){
       </div>
       </dd>
     </dl>
-    <a type="button" class="btn btn-light btn-lg btn-block" href="products.html">Ver productos</a>
-`;
+    
+    <hr class="my-3">
+    <h3 id="">Productos Relacionados</h3>
 
-document.getElementById("container").innerHTML = productContentToAppend;
+
+    <div class="row">
+            <div class="col-md-3">
+                <a href="`+productsPages[productToShow.relatedProducts[0]]+`" class="card mb-4 shadow-sm custom-card">
+                    <img class="bd-placeholder-img card-img-top" src="`+productsArray[productToShow.relatedProducts[0]].images[0]+`">
+                    <h3 class="m-3">`+productsArray[productToShow.relatedProducts[0]].name+`</h3>
+                    <div class="card-body">
+                        <p class="card-text" maxlength="20">`+productsArray[productToShow.relatedProducts[0]].description.substring(0,85)+`...</p>
+                        <p class="text-primary">Ver</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a href="`+productsPages[productToShow.relatedProducts[1]]+`" class="card mb-4 shadow-sm custom-card">
+                    <img class="bd-placeholder-img card-img-top" src="`+productsArray[productToShow.relatedProducts[1]].images[0]+`">
+                    <h3 class="m-3">`+productsArray[productToShow.relatedProducts[1]].name+`</h3>
+                    <div class="card-body">
+                        <p class="card-text" maxlength="20">`+productsArray[productToShow.relatedProducts[1]].description.substring(0,85)+`...</p>
+                        <p class="text-primary">Ver</p>
+                    </div>
+                </a>
+            </div>
+    </div>
+
+    <hr class="my-3">
+    <dt>Comentarios</dt>
+    
+        
+    `;
+
+    
+    let comentToAppend = "";
+    for(let i = 0; i<coments.length; i++){
+        let calification = coments[i].score;
+        let starsOn = `<span class="fa fa-star checked"></span>`;
+        let starsOff = `<span class="fa fa-star"></span>`;
+        let stars = starsOn.repeat(calification) + starsOff.repeat(5-calification);
+        
+        
+         
+        comentToAppend +=`
+        <hr class="my-3">
+                <div id="calification`+i+`">
+                    <dt  class="d-inline">`+coments[i].user+`</dt> 
+                    <p  class="d-inline">- `+coments[i].dateTime+` -</p>
+                    `+stars+`
+                </div>
+
+                <dd>
+                    <p class="m-1">`+coments[i].description+`</p>
+                </dd>
+
+        `;
+        
+    };
+     
+    
+
+    document.getElementById("container").innerHTML = productContentToAppend + comentToAppend;
 }
 
 
@@ -85,15 +140,28 @@ document.getElementById("container").innerHTML = productContentToAppend;
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
 
-    getJSONData(PRODUCT_INFO_URL_NEW).then(function(resultObj){
+    getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function(resultObj){
         if (resultObj.status === "ok")
         {
-            productsArray = resultObj.data;
-            //Muestro el producto
-            showProducts (productsArray);
+            comentsArray = resultObj.data;
             
+            getJSONData(PRODUCT_INFO_URL_NEW).then(function(resultObj){
+                if (resultObj.status === "ok")
+                {
+                    productsArray = resultObj.data;
+                    //Muestro el producto
+                    showProducts (productsArray, comentsArray);
+                    
+                }
+        
+            }); 
+    
         }
 
     }); 
+
+    
+
+    
 
 });
