@@ -94,10 +94,11 @@ function sigOutDelay(){
 }
 
 function userInfo(){
-  var normalLogin = localStorage.getItem("EmailNormal");
+  var normalLogin = localStorage.getItem("Name:");
+  var gogLogin = localStorage.getItem("ID:")
 
-        if(normalLogin != null){
-          var userName = localStorage.getItem("EmailNormal");
+        if(gogLogin === null){
+          var userName = localStorage.getItem("Name:");
           var foto = document.getElementById("userAvatar");
           var userButton = document.getElementById("dropdownMenuButton");
 

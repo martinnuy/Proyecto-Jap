@@ -16,7 +16,7 @@ function beforeLogin(){
     var userEmailNormal = document.getElementById("inputEmail").value;
 
     localStorage.setItem("Acceso", "Ok");
-    localStorage.setItem("EmailNormal", userEmailNormal);
+    localStorage.setItem("Name:", userEmailNormal);
     window.location.href = "inicio.html";
 
     return false;
