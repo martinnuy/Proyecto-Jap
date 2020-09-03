@@ -89,7 +89,8 @@ document.addEventListener("DOMContentLoaded", function(e){
         {
             productsArray = resultObj.data;
             //Muestro el producto
-            showProducts (productsArray);
+            setTimeout(function(){showProducts (productsArray)}, 200);
+            
         }
 
     }); 
