@@ -42,14 +42,21 @@ function showProducts (array, coments){
     let productToShow = array[productSelection];
 
     let productContentToAppend = `
-
-    <h3 id="productName">`+ productToShow.name +`</h3>
-    <hr class="my-3">
+    
     <dl>
-      <dt>Precio</dt>
+
+    <h1 id="productName" class="font-weight-bold">`+ productToShow.name +`</h1>
+    <hr class="my-3">
+    <div class="row">
+
+    <img class="img-fluid myImg col-md-6 d-inline shadow-lg p-0 mb-5 bg-white rounded" src="`+productToShow.images[0]+`" alt="" id="myImg" onclick="spanS()">
+
+    <div class="col-md-6 pl-5">
+      
       <dd>
-        <p id="productCost">`+productToShow.currency+ " " +productToShow.cost+`</p>
+        <h2 id="productCost">`+productToShow.currency+ " " +productToShow.cost+`</h2>
       </dd>
+      <hr class="my-3">
 
       <dt>Descripción</dt>
       <dd>
@@ -66,41 +73,53 @@ function showProducts (array, coments){
         <p id="productCount">`+productToShow.soldCount+`</p>
       </dd>
 
-      <dt>Imágenes ilustrativas</dt>
-      <dd>
-        <div class="row text-center text-lg-left pt-2" id="productImagesGallery">
-      <div class="col-lg-3 col-md-4 col-6">
-          <div class="d-block mb-4 h-100">
-              <img class="img-fluid img-thumbnail myImg" src="`+productToShow.images[0]+`" alt="" id="myImg">
-          </div>
-      </div>
-      
-      <div class="col-lg-3 col-md-4 col-6">
-          <div class="d-block mb-4 h-100">
-              <img class="img-fluid img-thumbnail myImg" src="`+productToShow.images[1]+`" alt="" id="myImg1">
-          </div>
-      </div>
-      
-      <div class="col-lg-3 col-md-4 col-6">
-          <div class="d-block mb-4 h-100">
-              <img class="img-fluid img-thumbnail myImg" src="`+productToShow.images[2]+`" alt="" id="myImg2">
-          </div>
-      </div>
-      
-      <div class="col-lg-3 col-md-4 col-6">
-          <div class="d-block mb-4 h-100">
-              <img class="img-fluid img-thumbnail myImg" src="`+productToShow.images[3]+`" alt="" id="myImg3">
-          </div>
-      </div>
-      </div>
-      </dd>
+               
 
         
+    </div>
+    
+    </div>
+
+    <hr class="my-3">
+
+            <dl>
+                <dt>Imágenes ilustrativas</dt>
+                <dd>
+                    <div class="row text-center text-lg-left pt-2" id="productImagesGallery">
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="d-block mb-4 h-100">
+                        <img class="img-fluid img-thumbnail myImg" src="`+productToShow.images[0]+`" alt="" id="myImg" onmouseover="changeImage(`+productSelection+`, 0)">
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="d-block mb-4 h-100">
+                        <img class="img-fluid img-thumbnail myImg" src="`+productToShow.images[1]+`" alt="" id="myImg1" onmouseover="changeImage(`+productSelection+`, 1)">
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="d-block mb-4 h-100">
+                        <img class="img-fluid img-thumbnail myImg" src="`+productToShow.images[2]+`" alt="" id="myImg2" onmouseover="changeImage(`+productSelection+`, 2)">
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-4 col-6">
+                    <div class="d-block mb-4 h-100">
+                        <img class="img-fluid img-thumbnail myImg" src="`+productToShow.images[3]+`" alt="" id="myImg3" onmouseover="changeImage(`+productSelection+`,3)">
+                    </div>
+                </div>
+                </div>
+                </dd>
+            </dl>
+    
     </dl>
+    
+    
 
         <div id="myModal" class="modal">
                 <span class="close">&times;</span>
-                <img class="modal-content" id="img01">
+                <img class="modal-content" id="img01" onclick="spanS ()">
             <div id="caption"></div>
         </div>
     
@@ -254,8 +273,54 @@ span.onclick = function() {
 }, 200)
 
     
+function span (){
+    document.getElementById('myModal').style.display = "none";
+}
+
+function spanS (){   
+    var selectImg = document.getElementById("img01");
+    document.getElementById('myModal').onclick=function(div){
+        if(div.target.id !== "img01"){
+            document.getElementById('myModal').style.display = "none";
+            selectImg.style.webkitAnimationName = "zoom";
+            selectImg.style.animationName = "zoom";
+        }else{
+            let element = selectImg;
+            let elementStyle = window.getComputedStyle(element);
+            let elementAnimation = elementStyle.getPropertyValue('animation-name');
+            let elementAnimationWebkit =  elementStyle.getPropertyValue('-webkit-animation-name');
+            
+            
+                if(elementAnimation === ("zoom")){
+                    selectImg.style.animationFillMode  = "forwards";
+                    selectImg.style.webkitAnimationName = "zoom2";
+                    selectImg.style.animationName = "zoom2";
+                }else if(elementAnimation === ("zoom3")){
+                    selectImg.style.animationFillMode  = "forwards";
+                    selectImg.style.webkitAnimationName = "zoom2";
+                    selectImg.style.animationName = "zoom2";
+
+                }else{
+                    selectImg.style.animationFillMode  = "forwards";
+                    selectImg.style.webkitAnimationName = "zoom3";
+                    selectImg.style.animationName = "zoom3";
+                }
+        }
+    }
+  }
 
 
+function changeImage(e, n){
+    document.getElementById("myImg");
+    number = e + 1;
+    if(n === 0){
+        document.getElementById("myImg").src = "./img/prod"+(e+1)+".jpg";
+    }else{
+        document.getElementById("myImg").src = "./img/prod"+(e+1)+"_"+ (n) + ".jpg";
+    }
+
+    
+}
 
 function onKeyDownHandler(event) {
 
@@ -263,9 +328,12 @@ function onKeyDownHandler(event) {
     let element = document.getElementById('myModal');
     let elementStyle = window.getComputedStyle(element);
     let elementDisplay = elementStyle.getPropertyValue('display');
-     
+     let imgS = document.getElementById("img01");
+
     if((elementDisplay != "none") && (codigo === "Escape")){
       element.style.display = "none";
+      imgS.style.webkitAnimationName = "zoom";
+      imgS.style.animationName = "zoom";
     }
 
      

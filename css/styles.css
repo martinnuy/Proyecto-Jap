@@ -163,6 +163,7 @@ a.custom-card:hover {
   display: block;
   width: 80%;
   max-width: 700px;
+  margin-top: 7%;
 }
 
 /* Caption of Modal Image */
@@ -170,7 +171,7 @@ a.custom-card:hover {
   margin: auto;
   display: block;
   width: 80%;
-  max-width: 700px;
+  /*max-width: 700px;*/
   text-align: center;
   color: #ccc;
   padding: 10px 0;
@@ -192,6 +193,26 @@ a.custom-card:hover {
 
 @keyframes zoom {
   from {transform:scale(0.9)} 
+  to {transform:scale(1)}
+}
+
+@-webkit-keyframes zoom2 {
+  from {-webkit-transform:scale(1)} 
+  to {-webkit-transform:scale(1.7)}
+}
+
+@keyframes zoom2 {
+  from {transform:scale(1)} 
+  to {transform:scale(1.7)}
+}
+
+@-webkit-keyframes zoom3 {
+  from {-webkit-transform:scale(1)} 
+  to {-webkit-transform:scale(1.7)}
+}
+
+@keyframes zoom3 {
+  from {transform:scale(1.7)} 
   to {transform:scale(1)}
 }
 
