@@ -37,7 +37,7 @@ for(let i = 0; i < productsPages.length; i++){
         productSelection = productsPages.indexOf(productsPages[i]);
     }
 }
-
+let holas = null;
 function showProducts (array, coments){
     let productToShow = array[productSelection];
 
@@ -71,30 +71,38 @@ function showProducts (array, coments){
         <div class="row text-center text-lg-left pt-2" id="productImagesGallery">
       <div class="col-lg-3 col-md-4 col-6">
           <div class="d-block mb-4 h-100">
-              <img class="img-fluid img-thumbnail" src="`+productToShow.images[0]+`" alt="">
+              <img class="img-fluid img-thumbnail myImg" src="`+productToShow.images[0]+`" alt="" id="myImg">
           </div>
       </div>
       
       <div class="col-lg-3 col-md-4 col-6">
           <div class="d-block mb-4 h-100">
-              <img class="img-fluid img-thumbnail" src="`+productToShow.images[1]+`" alt="">
+              <img class="img-fluid img-thumbnail myImg" src="`+productToShow.images[1]+`" alt="" id="myImg1">
           </div>
       </div>
       
       <div class="col-lg-3 col-md-4 col-6">
           <div class="d-block mb-4 h-100">
-              <img class="img-fluid img-thumbnail" src="`+productToShow.images[2]+`" alt="">
+              <img class="img-fluid img-thumbnail myImg" src="`+productToShow.images[2]+`" alt="" id="myImg2">
           </div>
       </div>
       
       <div class="col-lg-3 col-md-4 col-6">
           <div class="d-block mb-4 h-100">
-              <img class="img-fluid img-thumbnail" src="`+productToShow.images[3]+`" alt="">
+              <img class="img-fluid img-thumbnail myImg" src="`+productToShow.images[3]+`" alt="" id="myImg3">
           </div>
       </div>
       </div>
       </dd>
+
+        
     </dl>
+
+        <div id="myModal" class="modal">
+                <span class="close">&times;</span>
+                <img class="modal-content" id="img01">
+            <div id="caption"></div>
+        </div>
     
     <hr class="my-3">
     <h3 id="">Productos Relacionados</h3>
@@ -175,9 +183,11 @@ function showProducts (array, coments){
                         </form>                    
 
         `;
+
+        
      
     
-
+    document.getElementsByTagName("body")[0].setAttribute("onkeydown", "onKeyDownHandler(event)");
     document.getElementById("container").innerHTML = productContentToAppend + comentToAppend +comentsForm;
 }
 
@@ -208,15 +218,55 @@ function sendComent(){
 
 
 
-document.addEventListener("DOMContentLoaded", function(e){
+
+    
+// Get the modal
+
+
+// Get the image and insert it inside the modal - use its "alt" text as a caption
+setTimeout(function(){
+    let imgContainer = document.getElementsByTagName("dl")[0];
+    let imgProductsModal = imgContainer.getElementsByTagName("img");
+    var modal = document.getElementById("myModal");
+
+        for(let i = 0; i<imgProductsModal.length; i++){
+
+            var img = imgProductsModal[i];
+            var modalImg = document.getElementById("img01");
+            var captionText = document.getElementById("caption");
+            img.onclick = function(){
+            modal.style.display = "block";
+            modalImg.src = this.src;
+            captionText.innerHTML = this.alt;
+        }
+
+}
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() { 
+  modal.style.display = "none";
+}
+
+
+
+}, 200)
 
     
 
 
-    
-    
-    
 
-});
+function onKeyDownHandler(event) {
 
+    var codigo = event.key;
+    let element = document.getElementById('myModal');
+    let elementStyle = window.getComputedStyle(element);
+    let elementDisplay = elementStyle.getPropertyValue('display');
+     
+    if((elementDisplay != "none") && (codigo === "Escape")){
+      element.style.display = "none";
+    }
 
+     
+}
