@@ -9,25 +9,7 @@ let productSelection = null;
 let productsArray = [];
 let comentsArray = [];
 
-    getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function(resultObj){
-        if (resultObj.status === "ok")
-        {
-            comentsArray = resultObj.data;
-            
-            getJSONData(PRODUCT_INFO_URL_NEW).then(function(resultObj){
-                if (resultObj.status === "ok")
-                {
-                    productsArray = resultObj.data;
-                    //Muestro el producto
-                    showProducts (productsArray, comentsArray);
-                    
-                }
-        
-            }); 
-    
-        }
 
-    }); 
 
 
 
@@ -37,6 +19,7 @@ for(let i = 0; i < productsPages.length; i++){
         productSelection = productsPages.indexOf(productsPages[i]);
     }
 }
+
 let holas = null;
 function showProducts (array, coments){
     let productToShow = array[productSelection];
@@ -335,3 +318,24 @@ function onKeyDownHandler(event) {
 
      
 }
+
+
+getJSONData(PRODUCT_INFO_COMMENTS_URL_NEW[productSelection]).then(function(resultObj){
+    if (resultObj.status === "ok")
+    {
+        comentsArray = resultObj.data;
+        
+        getJSONData(PRODUCT_INFO_URL_NEW).then(function(resultObj){
+            if (resultObj.status === "ok")
+            {
+                productsArray = resultObj.data;
+                //Muestro el producto
+                showProducts (productsArray, comentsArray);
+                
+            }
+    
+        }); 
+
+    }
+
+}); 

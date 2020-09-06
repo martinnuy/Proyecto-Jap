@@ -1,24 +1,24 @@
 [{
-    "score": 3,
+    "score": 2,
     "description": "No es lo que me esperaba",
-    "user": "andres",
+    "user": "andres_alvarez",
     "dateTime": "2020-04-25 18:03:52"
 },
 {
-    "score": 5,
+    "score": 4,
     "description": "Un precio adecuado a lo que ofrece",
-    "user": "emilia",
+    "user": "emilia_diaz",
     "dateTime": "2020-05-17 13:42:18"
 },
 {
-    "score": 4,
+    "score": 3,
     "description": "Tiene un buen rendimiento, pero con acabados mejorables en el interior",
-    "user": "patricia",
+    "user": "patricia_rodriguez",
     "dateTime": "2020-07-14 09:05:13"
 },
 {
-    "score": 5,
+    "score": 4,
     "description": "Muy util para estacionar en ciudad",
-    "user": "luis",
+    "user": "luis_trindade",
     "dateTime": "2020-08-21 15:05:22"
 }]

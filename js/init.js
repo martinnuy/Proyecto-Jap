@@ -7,6 +7,7 @@ const PRODUCT_INFO_COMMENTS_URL = "https://japdevdep.github.io/ecommerce-api/pro
 const CART_INFO_URL = "https://japdevdep.github.io/ecommerce-api/cart/987.json";
 const CART_BUY_URL = "https://japdevdep.github.io/ecommerce-api/cart/buy.json";
 const PRODUCT_INFO_URL_NEW = "https://prodigyuy.github.io/Proyecto-Jap/json/all.json";
+const PRODUCT_INFO_COMMENTS_URL_NEW = ["https://japdevdep.github.io/ecommerce-api/product/5678-comments.json", "https://prodigyuy.github.io/Proyecto-Jap/json/5678-comments1.json", "https://prodigyuy.github.io/Proyecto-Jap/json/5678-comments2.json", "https://prodigyuy.github.io/Proyecto-Jap/json/5678-comments3.json"]
 
 
 

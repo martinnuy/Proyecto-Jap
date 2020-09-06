@@ -1,24 +1,24 @@
 [{
     "score": 5,
     "description": "Muy comodo para hacer largas distancias",
-    "user": "roberto",
+    "user": "roberto_quinteros",
     "dateTime": "2020-07-25 18:03:52"
 },
 {
     "score": 5,
     "description": "Se desempeña bien tanto en ciudad como en carretera",
-    "user": "rodrigo",
+    "user": "rodrigo_nuñez",
     "dateTime": "2020-08-17 13:42:18"
 },
 {
     "score": 4,
     "description": "Muy conforme, aunque su precio es un poco elevado para lo que ofrece",
-    "user": "mariela",
+    "user": "mariela_salinas",
     "dateTime": "2020-09-14 09:05:13"
 },
 {
     "score": 5,
     "description": "Esta genial!",
-    "user": "agustin",
+    "user": "agustin_bonilla",
     "dateTime": "2020-11-21 15:05:22"
 }]
