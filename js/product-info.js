@@ -1,7 +1,3 @@
-//Función que se ejecuta una vez que se haya lanzado el evento de
-//que el documento se encuentra cargado, es decir, se encuentran todos los
-//elementos HTML presentes.
-
 let getURL =  window.location.pathname.split("/");
 let URLActual = getURL[getURL.length-1];
 let productsPages = ["product-info0.html", "product-info1.html", "product-info2.html", "product-info3.html"];
@@ -11,16 +7,14 @@ let comentsArray = [];
 
 
 
-
-
-
+//Averiguamos en que producto nos encontramos para posteriormente desplegar la informacion del mismo.
 for(let i = 0; i < productsPages.length; i++){
     if(productsPages[i] === URLActual){
         productSelection = productsPages.indexOf(productsPages[i]);
     }
 }
 
-let holas = null;
+//Funcion que trae la informacion y la muestra en html
 function showProducts (array, coments){
     let productToShow = array[productSelection];
 
@@ -140,6 +134,7 @@ function showProducts (array, coments){
     `;
 
     
+    //Comentarios a mostrar
     let comentToAppend = "";
     for(let i = 0; i<coments.length; i++){
         let calification = coments[i].score;
@@ -165,6 +160,9 @@ function showProducts (array, coments){
         
     };
 
+
+
+    //Formulario de comentarios
     let comentsForm = `
 
         <hr class="my-3">
@@ -193,6 +191,8 @@ function showProducts (array, coments){
     document.getElementById("container").innerHTML = productContentToAppend + comentToAppend +comentsForm;
 }
 
+
+//Informacion para enviar un comentario en local.
 let userName = "";
 let userComent = "";
 let userCalification = "";
@@ -221,11 +221,7 @@ function sendComent(){
 
 
 
-    
-// Get the modal
-
-
-// Get the image and insert it inside the modal - use its "alt" text as a caption
+//Funcion para abrir un modal con la imagen clickeada.
 function openImages(){
     let imgContainer = document.getElementById("imgContainer");
     let imgProductsModal = imgContainer.getElementsByTagName("img");
@@ -243,10 +239,8 @@ function openImages(){
         }
 
 }
-// Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 
-// When the user clicks on <span> (x), close the modal
 span.onclick = function() { 
   modal.style.display = "none";
 }
@@ -256,7 +250,7 @@ span.onclick = function() {
 }
 
     
-
+//Funcion para hacer zoom en la imagen seleccionada en el modal.
 function zoomImage(){   
     var selectImg = document.getElementById("img01");
     document.getElementById('myModal').onclick=function(div){
@@ -290,6 +284,7 @@ function zoomImage(){
   }
 
 
+  //Funcion para cambiar la imagen principal de la pagina cuando pasamos el mouse por arriba.
 function changeImage(e, n){
     document.getElementById("myImg");
     number = e + 1;
@@ -302,6 +297,7 @@ function changeImage(e, n){
     
 }
 
+//funcion para cerrar el modal con la tecla Escape
 function onKeyDownHandler(event) {
 
     var codigo = event.key;
@@ -320,6 +316,8 @@ function onKeyDownHandler(event) {
 }
 
 
+
+//Traemos los datos (Productos y comentarios) desde el servidor.
 getJSONData(PRODUCT_INFO_COMMENTS_URL_NEW[productSelection]).then(function(resultObj){
     if (resultObj.status === "ok")
     {
