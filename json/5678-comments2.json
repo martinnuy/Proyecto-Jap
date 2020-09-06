@@ -1,0 +1,24 @@
+[{
+    "score": 3,
+    "description": "No es lo que me esperaba",
+    "user": "andres",
+    "dateTime": "2020-04-25 18:03:52"
+},
+{
+    "score": 5,
+    "description": "Un precio adecuado a lo que ofrece",
+    "user": "emilia",
+    "dateTime": "2020-05-17 13:42:18"
+},
+{
+    "score": 4,
+    "description": "Tiene un buen rendimiento, pero con acabados mejorables en el interior",
+    "user": "patricia",
+    "dateTime": "2020-07-14 09:05:13"
+},
+{
+    "score": 5,
+    "description": "Muy util para estacionar en ciudad",
+    "user": "luis",
+    "dateTime": "2020-08-21 15:05:22"
+}]

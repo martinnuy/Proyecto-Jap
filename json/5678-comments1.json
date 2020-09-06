@@ -1,0 +1,24 @@
+[{
+    "score": 5,
+    "description": "Cumplio con mis expectativas",
+    "user": "pablo",
+    "dateTime": "2020-01-5 12:03:05"
+},
+{
+    "score": 4,
+    "description": "En general esta muy bien!",
+    "user": "ana",
+    "dateTime": "2020-03-17 13:42:18"
+},
+{
+    "score": 4,
+    "description": "Un auto muy bueno para el uso en ciudad",
+    "user": "gerardo",
+    "dateTime": "2020-04-14 09:05:13"
+},
+{
+    "score": 5,
+    "description": "Muy util para el uso diario",
+    "user": "manuel",
+    "dateTime": "2020-06-21 15:05:22"
+}]

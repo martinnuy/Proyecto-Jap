@@ -43,13 +43,13 @@ function showProducts (array, coments){
 
     let productContentToAppend = `
     
-    <dl>
+    <dl id="imgContainer">
 
     <h1 id="productName" class="font-weight-bold">`+ productToShow.name +`</h1>
     <hr class="my-3">
     <div class="row">
 
-    <img class="img-fluid myImg col-md-6 d-inline shadow-lg p-0 mb-5 bg-white rounded" src="`+productToShow.images[0]+`" alt="" id="myImg" onclick="spanS()">
+    <img class="img-fluid myImg col-md-6 d-inline shadow-lg p-0 mb-5 bg-white rounded" src="`+productToShow.images[0]+`" alt="" id="myImg" onclick="openImages()">
 
     <div class="col-md-6 pl-5">
       
@@ -88,25 +88,25 @@ function showProducts (array, coments){
                     <div class="row text-center text-lg-left pt-2" id="productImagesGallery">
                 <div class="col-lg-3 col-md-4 col-6">
                     <div class="d-block mb-4 h-100">
-                        <img class="img-fluid img-thumbnail myImg" src="`+productToShow.images[0]+`" alt="" id="myImg" onmouseover="changeImage(`+productSelection+`, 0)">
+                        <img class="img-fluid img-thumbnail myImg" src="`+productToShow.images[0]+`" alt="" id="myImg" onclick="openImages()" onmouseover="changeImage(`+productSelection+`, 0)">
                     </div>
                 </div>
                 
                 <div class="col-lg-3 col-md-4 col-6">
                     <div class="d-block mb-4 h-100">
-                        <img class="img-fluid img-thumbnail myImg" src="`+productToShow.images[1]+`" alt="" id="myImg1" onmouseover="changeImage(`+productSelection+`, 1)">
+                        <img class="img-fluid img-thumbnail myImg" src="`+productToShow.images[1]+`" alt="" id="myImg1" onclick="openImages()" onmouseover="changeImage(`+productSelection+`, 1)">
                     </div>
                 </div>
                 
                 <div class="col-lg-3 col-md-4 col-6">
                     <div class="d-block mb-4 h-100">
-                        <img class="img-fluid img-thumbnail myImg" src="`+productToShow.images[2]+`" alt="" id="myImg2" onmouseover="changeImage(`+productSelection+`, 2)">
+                        <img class="img-fluid img-thumbnail myImg" src="`+productToShow.images[2]+`" alt="" id="myImg2" onclick="openImages()" onmouseover="changeImage(`+productSelection+`, 2)">
                     </div>
                 </div>
                 
                 <div class="col-lg-3 col-md-4 col-6">
                     <div class="d-block mb-4 h-100">
-                        <img class="img-fluid img-thumbnail myImg" src="`+productToShow.images[3]+`" alt="" id="myImg3" onmouseover="changeImage(`+productSelection+`,3)">
+                        <img class="img-fluid img-thumbnail myImg" src="`+productToShow.images[3]+`" alt="" id="myImg3" onclick="openImages()" onmouseover="changeImage(`+productSelection+`,3)">
                     </div>
                 </div>
                 </div>
@@ -119,7 +119,7 @@ function showProducts (array, coments){
 
         <div id="myModal" class="modal">
                 <span class="close">&times;</span>
-                <img class="modal-content" id="img01" onclick="spanS ()">
+                <img class="modal-content" id="img01" onclick="zoomImage()">
             <div id="caption"></div>
         </div>
     
@@ -243,8 +243,8 @@ function sendComent(){
 
 
 // Get the image and insert it inside the modal - use its "alt" text as a caption
-setTimeout(function(){
-    let imgContainer = document.getElementsByTagName("dl")[0];
+function openImages(){
+    let imgContainer = document.getElementById("imgContainer");
     let imgProductsModal = imgContainer.getElementsByTagName("img");
     var modal = document.getElementById("myModal");
 
@@ -270,14 +270,11 @@ span.onclick = function() {
 
 
 
-}, 200)
-
-    
-function span (){
-    document.getElementById('myModal').style.display = "none";
 }
 
-function spanS (){   
+    
+
+function zoomImage(){   
     var selectImg = document.getElementById("img01");
     document.getElementById('myModal').onclick=function(div){
         if(div.target.id !== "img01"){
