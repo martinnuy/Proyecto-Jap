@@ -191,7 +191,6 @@ function showProducts (array, coments){
     document.getElementById("container").innerHTML = productContentToAppend + comentToAppend +comentsForm;
 }
 
-
 //Informacion para enviar un comentario en local.
 let userName = "";
 let userComent = "";
