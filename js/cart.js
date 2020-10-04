@@ -198,6 +198,8 @@ function showProducts (array, par, envio, estadoEnvio){
     
     if(subTotal === 0){
       precioEnvio = 0;
+    }else if(estadoEnvio === "noCambiar"){
+      precioEnvio = precioEnvio;
     }else if(envio === "standard" && precioEnvio === 100 && estadoEnvio === null){
       precioEnvio = 0;
     }else if(envio === "express" && precioEnvio === 500 && estadoEnvio === null){
@@ -271,12 +273,12 @@ function sumarProductos(num, action){
         document.getElementById("input"+num).stepUp([1]);
         let artOneCount = document.getElementById("input"+num).value;
         cartItems.articles[num].count = artOneCount;
-        showProducts (cartItems, undefined, tipoDeEnvio, "ok")
+        showProducts (cartItems, undefined, tipoDeEnvio, "noCambiar")
     }else if(action === "resta"){
         document.getElementById("input"+num).stepDown([1]);
         let artOneCount = document.getElementById("input"+num).value;
         cartItems.articles[num].count = artOneCount;
-        showProducts (cartItems, undefined, tipoDeEnvio, "ok")
+        showProducts (cartItems, undefined, tipoDeEnvio, "noCambiar")
     }
 
 }
@@ -284,7 +286,7 @@ function sumarProductos(num, action){
 
 function cambiarTipoEnvio(tipo){
   tipoDeEnvio = tipo;
-  showProducts(cartItems, undefined, tipoDeEnvio)
+  showProducts(cartItems, undefined, tipoDeEnvio, null)
 }
 
 
