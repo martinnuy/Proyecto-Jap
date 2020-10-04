@@ -3,7 +3,7 @@ var tipoDeEnvio = null;
 var precioEnvio = 0;
 
 
-function showProducts (array, par, envio){
+function showProducts (array, par, envio, estadoEnvio){
     let productToShow = array;
     var valor = [];
 
@@ -198,9 +198,9 @@ function showProducts (array, par, envio){
     
     if(subTotal === 0){
       precioEnvio = 0;
-    }else if(envio === "standard" && precioEnvio === 100){
+    }else if(envio === "standard" && precioEnvio === 100 && estadoEnvio === null){
       precioEnvio = 0;
-    }else if(envio === "express" && precioEnvio === 500){
+    }else if(envio === "express" && precioEnvio === 500 && estadoEnvio === null){
       precioEnvio = 0;
     }else if(envio === "standard"){
       precioEnvio = 100;
@@ -271,12 +271,12 @@ function sumarProductos(num, action){
         document.getElementById("input"+num).stepUp([1]);
         let artOneCount = document.getElementById("input"+num).value;
         cartItems.articles[num].count = artOneCount;
-        showProducts (cartItems, undefined, tipoDeEnvio)
+        showProducts (cartItems, undefined, tipoDeEnvio, "ok")
     }else if(action === "resta"){
         document.getElementById("input"+num).stepDown([1]);
         let artOneCount = document.getElementById("input"+num).value;
         cartItems.articles[num].count = artOneCount;
-        showProducts (cartItems, undefined, tipoDeEnvio)
+        showProducts (cartItems, undefined, tipoDeEnvio, "ok")
     }
 
 }
