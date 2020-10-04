@@ -306,7 +306,7 @@ function removeItem(item){
     </div>
       `;
       document.getElementById("container").innerHTML = emptyCart;
-      setTimeout(() => {window.location.href = "../categories.html";}, 5000);
+      setTimeout(() => {window.location.href = "categories.html";}, 5000);
   }
 
   
