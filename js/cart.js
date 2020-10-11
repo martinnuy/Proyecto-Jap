@@ -475,6 +475,7 @@ function showProducts (array, par, envio, estadoEnvio, direccion, pais, metodoPa
                   <option value="ZW">Zimbabue</option>
                 </select>
                 <input type="text" class="form-control mb-2" placeholder="Ingrese su dirección." value="`+direccion+`" id="direccion" required>
+                <small class="form-text text-muted text-center mb-4 mt-0">Calle, numero de puerta, esquina.</small>     
                 <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 ">
                   <span>Costo de envío: </span>
                   <span class="align-self-end">$ `+precioEnvio+`</span>
@@ -488,7 +489,7 @@ function showProducts (array, par, envio, estadoEnvio, direccion, pais, metodoPa
                 <span><strong>$ `+totalAPagar.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")+`</strong></span>
               </li>
               <small class="form-text text-muted text-center mb-4 mt-0">
-                          (Pesos Uruguayos)
+                          Pesos Uruguayos
                         </small>
                        
               <span class="text-center">Metodo de pago</span>
