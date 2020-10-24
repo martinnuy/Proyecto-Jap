@@ -198,8 +198,6 @@ function showProducts (array, par, envio, estadoEnvio, direccion, pais, metodoPa
     }
 
     
-
-    
     //Selector de envio:
     if(subTotal === 0){
       precioEnvio = 0;
@@ -217,6 +215,8 @@ function showProducts (array, par, envio, estadoEnvio, direccion, pais, metodoPa
       precioEnvio = (subTotal*7) / 100;
     }else if(envio === "premium"){
       precioEnvio = (subTotal*15) / 100;
+    }else if(envio === null){
+      precioEnvio = 0;
     }
 
     
@@ -231,12 +231,32 @@ function showProducts (array, par, envio, estadoEnvio, direccion, pais, metodoPa
               </li>
               <strong class="mt-3">Envio:</strong>
 
-              <li class="list-group-item d-flex justify-content-between align-items-center px-0 pb-0 border-0">
-                <button type="button" class="btn btn-light azul mb-1 buttonSizeSmall" onclick="cambiarTipoEnvio('standard')">Standard</button>
-                <button type="button" class="btn btn-light azul mb-1 buttonSizeSmall" onclick="cambiarTipoEnvio('express')">Express</button>
-                <button type="button" class="btn btn-light azul mb-1 buttonSizeSmall" onclick="cambiarTipoEnvio('premium')">Premium</button>
-              </li>
+                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <i class="fas fa-exclamation-triangle fa-7x col-md-5 marginForIcon mb-4 icon-color"></i>
+                          <p class="text-center">Para poder realizar su compra, es necesario elegir un metodo de pago y un tipo de envío.</p>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            
             <form onsubmit="return false">  
+              <li class="list-group-item d-flex justify-content-between align-items-center px-0 pb-0 border-0">
+                <button type="button" class="btn btn-light azul mb-1 buttonSizeSmall" onclick="cambiarTipoEnvio('standard')" name="envio" required>Standard</button>
+                <button type="button" class="btn btn-light azul mb-1 buttonSizeSmall" onclick="cambiarTipoEnvio('express')" name="envio" required>Express</button>
+                <button type="button" class="btn btn-light azul mb-1 buttonSizeSmall" onclick="cambiarTipoEnvio('premium')" name="envio" required>Premium</button>
+              </li>
+
               <select name="pais" class="form-control mt-3 mb-2" id="countryList" required>
                   <option value="" disabled selected>País de destino.</option>
                   <option value="AF">Afganistán</option>
@@ -488,23 +508,145 @@ function showProducts (array, par, envio, estadoEnvio, direccion, pais, metodoPa
                 </div>
                 <span><strong>$ `+totalAPagar.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")+`</strong></span>
               </li>
-              <small class="form-text text-muted text-center mb-4 mt-0">
+              <small class="form-text text-muted text-center mb-2 mt-0">
                           Pesos Uruguayos
                         </small>
                        
-              <span class="text-center">Metodo de pago</span>
-              <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 ">
-                  <div class="form-check form-check-inline m-0">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" required>
-                    <label class="form-check-label fontSizeLabel" for="inlineRadio1">Tarjeta de credito.</label>
-                  </div>
-                  <div class="form-check form-check-inline m-0">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" required>
-                    <label class="form-check-label fontSizeLabel" for="inlineRadio2">Cuenta bancaria.</label>
-                 </div> 
-               </li>
+          
+
+               
+                  <button type="button" class="btn btn-secondary btn-block litleButton mx-auto mb-2" onclick="metodoDePago()">Elegir metodo de pago</button>
                <button type="submit" class="btn btn-primary btn-block" onclick="buyButton()">Comprar!</button>
-          </form>        
+          </form>    
+          
+          <div class="modal fade" id="metodoDePago" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content width90">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item">
+                              <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><i class="fa fa-credit-card mr-1"></i>Tarjeta de Credito</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><i class="fa fa-university mr-1"></i>Transferencia Bancaria.</a>
+                            </li>
+                          </ul>
+                          <div class="tab-content mt-3" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <form role="form" onsubmit="return false">
+                            <div class="form-group">
+                            <label for="username">Nombre del titular</label>
+                            <div class="input-group">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-user"></i></span>
+                              </div>
+                              <input type="text" class="form-control" name="username" placeholder="" required="" id="nameInput" required>
+                            </div> <!-- input-group.// -->
+                            </div> <!-- form-group.// -->
+                            
+                            <div class="form-group">
+                            <label for="cardNumber">Numero de Tarjeta</label>
+                            <div class="input-group">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-credit-card"></i></span>
+                              </div>
+                              <input type="text" class="form-control" name="cardNumber" placeholder="" id="creditInput" required>
+                            </div> <!-- input-group.// -->
+                            </div> <!-- form-group.// -->
+                            
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <div class="form-group">
+                                        <label><span class="hidden-xs">Fecha de Expiracion</span> </label>
+                                      <div class="form-inline">
+                                        <select class="form-control" style="width:45%" id="mesInput" required>
+                                      <option value disabled selected>MM</option>
+                                      <option>Enero</option>
+                                      <option>Febrero</option>
+                                      <option>Marzo</option>
+                                      <option>Abril</option>
+                                      <option>Mayo</option>
+                                      <option>Junio</option>
+                                      <option>Julio</option>
+                                      <option>Agosto</option>
+                                      <option>Septiembre</option>
+                                      <option>Octubre</option>
+                                      <option>Noviembre</option>
+                                      <option>Diciembre</option>
+                                    </select>
+                                          <span style="width:10%; text-align: center"> / </span>
+                                          <select class="form-control" style="width:45%" id="yearInput" required>
+                                      <option value disabled selected>AA</option>
+                                      <option>2020</option>
+                                      <option>2021</option>
+                                      <option>2022</option>
+                                      <option>2023</option>
+                                      <option>2024</option>
+                                      <option>2025</option>
+                                    </select>
+                                    <div class="pt-4">
+
+                                      <img class="mr-2" width="45px"
+                                        src="https://mdbootstrap.com/wp-content/plugins/woocommerce-gateway-stripe/assets/images/visa.svg"
+                                        alt="Visa">
+                                      <img class="mr-2" width="45px"
+                                        src="https://mdbootstrap.com/wp-content/plugins/woocommerce-gateway-stripe/assets/images/amex.svg"
+                                        alt="American Express">
+                                      <img class="mr-2" width="45px"
+                                        src="https://mdbootstrap.com/wp-content/plugins/woocommerce-gateway-stripe/assets/images/mastercard.svg"
+                                        alt="Mastercard">
+                                    </div>
+
+                                      </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label>CVV <i class="fa fa-question-circle" data-toggle="tooltip" data-html="true" title="<img src='img/cvv.png' alt=''>"></i></label>
+                                        <input class="form-control" required="" type="text" id="cvvInput">
+                                    </div> <!-- form-group.// -->
+                                </div>
+                            </div> <!-- row.// -->
+                            <button class="subscribe btn btn-primary btn-block" type="submit" onclick="buyMetodValue('Credito', 'metodoDePago')"> Confirmar  </button>
+                            </form>
+                            </div>
+                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                  <form onsubmit="return false">
+                                    <div class="form-group "> <label for="Select Your Bank">
+                                          <h5>Datos para la transferencia bancaria:</h5>
+                                          <dl class="param">
+                                            <dt>BANCO: </dt>
+                                            <dd>BROU</dd>
+                                          </dl>
+                                          <dl class="param">
+                                            <dt>Numero de cuenta: </dt>
+                                            <dd> 12345678912345</dd>
+                                          </dl>
+                                          <dl class="param">
+                                            <dt>Codigo IBAN: </dt>
+                                            <dd> 123456789</dd>
+                                          </dl>
+                                          <p><strong>Importante: <br>
+                                          </strong>La acreditación dependerá de cuándo fue realizada la misma. 
+                                          Si fue efectuada después de las 16 horas de un día hábil o en un día no hábil, la transferencia se procesará el próximo día hábil.</p>
+                                  <div class="form-group">
+                                      <p> <button type="submit" class="btn btn-primary " onclick="buyMetodValue('Debito', 'metodoDePago')"><i class="fas fa-mobile-alt mr-2"></i>Confirmar</button> </p>
+                                  </form>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
     `;
 
 
@@ -515,9 +657,9 @@ function showProducts (array, par, envio, estadoEnvio, direccion, pais, metodoPa
     if(pais != null){
         document.getElementById("countryList").options[pais].selected = "selected";
     }
-    if(metodoPagoPar != null){
-      setTimeout(() => {document.getElementById(metodoPago).checked = "checked";}, 0.1);
-  }
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
 }
 
 
@@ -552,18 +694,21 @@ function sumarProductos(num, action){
         cartItems.articles[num].count = artOneCount;
         pais = document.getElementById("countryList").selectedIndex;
         direccion = document.getElementById("direccion").value;
-        buyMetodValue();
+        //buyMetodValue();
         showProducts (cartItems, undefined, tipoDeEnvio, "noCambiar", direccion, pais, metodoPago);
         cambiarTipoEnvio(tipoDeEnvio);
     }else if(action === "resta"){
+      if(document.getElementById("input"+num).value != 0){
         document.getElementById("input"+num).stepDown([1]);
         let artOneCount = document.getElementById("input"+num).value;
         cartItems.articles[num].count = artOneCount;
         pais = document.getElementById("countryList").selectedIndex;
         direccion = document.getElementById("direccion").value;
-        buyMetodValue();
+        //buyMetodValue();
         showProducts (cartItems, undefined, tipoDeEnvio, "noCambiar", direccion, pais, metodoPago);
         cambiarTipoEnvio(tipoDeEnvio);
+      }
+        
     }
 
 }
@@ -572,7 +717,7 @@ function sumarProductos(num, action){
 function cambiarTipoEnvio(tipo){
   pais = document.getElementById("countryList").selectedIndex;
   direccion = document.getElementById("direccion").value;
-  buyMetodValue();
+  //buyMetodValue();
   tipoDeEnvio = tipo;
   showProducts(cartItems, undefined, tipoDeEnvio, null, direccion, pais, metodoPago)
 }
@@ -584,9 +729,10 @@ function removeItem(item){
   
   if(cartItems.articles.length > 1){
     cartItems.articles.splice(item, 1);
+    tipoDeEnvio = null;
     pais = document.getElementById("countryList").selectedIndex;
     direccion = document.getElementById("direccion").value;
-    buyMetodValue();
+    //buyMetodValue();
     showProducts (cartItems, undefined, tipoDeEnvio, undefined, direccion, pais, metodoPago);
   }else if(cartItems.articles.length === 1){
     let emptyCart = `
@@ -617,20 +763,41 @@ function showModal(modal){
 function buyButton(){
   let conditionA = document.getElementById("countryList").value;
   let conditionB = document.getElementById("direccion").value;
-  let conditionC = document.getElementById("inlineRadio1").checked;
-  let conditionD = document.getElementById("inlineRadio2").checked;
-  
-  if(conditionA != "" && conditionB != "" && (conditionC || conditionD)){
+
+  if(precioEnvio === 0 || metodoPago == null){
+    $('#exampleModalCenter').modal({
+      keyboard: false
+    })
+  }else if(conditionA != "" && conditionB != "" && precioEnvio != 0 && metodoPago != null){
     document.getElementById("myModal").style.display = "block";
     setTimeout(() => {document.getElementById("myModal").style.display = "none"}, 2000);
   }
   
 }
 
-function buyMetodValue(){
-  if(document.getElementById("inlineRadio1").checked){
-    metodoPago = document.getElementById("inlineRadio1").getAttribute("id");;
-  }else if(document.getElementById("inlineRadio2").checked){
-    metodoPago = document.getElementById("inlineRadio2").getAttribute("id");
+//Boton para confirmar metodo de pago y cerrar ventana modal.
+function buyMetodValue(valor, idModal){
+  if(valor === "Credito"){
+    let conditionA = document.getElementById("nameInput").value;
+    let conditionB = document.getElementById("creditInput").value;
+    let conditionC = document.getElementById("mesInput").value;
+    let conditionD = document.getElementById("yearInput").value;
+    let conditionE = document.getElementById("cvvInput").value;
+
+    if(conditionA != "" && conditionB != "" && conditionC != "" && conditionD != "" && conditionE != ""){
+      metodoPago = valor;
+      $('#'+idModal).modal('hide');
+    }
+  }else if(valor === "Debito"){
+      metodoPago = valor;
+      $('#'+idModal).modal('hide');
   }
 }
+
+//Muestra la ventana modal con los metodos de pago.
+function metodoDePago(){
+  $('#metodoDePago').modal({
+    keyboard: false
+  })
+}
+

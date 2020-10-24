@@ -509,3 +509,23 @@ input[type=number] {
 .fontSizeLabel{
   font-size: 15px;
 }
+
+.marginForIcon{
+  margin-left: 30%;
+}
+
+.icon-color {
+  color: rgba(255, 0, 0, 0.685);
+}
+
+.litleButton{
+  width: 70%;
+}
+
+.width90{
+  width: 90%;
+}
+
+.tooltip-inner {
+  max-width: 500px;
+}
