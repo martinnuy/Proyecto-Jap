@@ -241,3 +241,28 @@ a.custom-card:hover {
   }
 }
 
+
+.fadeIn{
+animation: fadeIn 3s;
+}
+
+
+@keyframes fadeIn{
+  from{
+    opacity: 0;
+  
+}
+to{
+    opacity: 1;
+  
+}
+}
+
+.marginForIcon{
+  margin-left: 30%;
+}
+
+.icon-color {
+  color: rgba(255, 0, 0, 0.685);
+}
+

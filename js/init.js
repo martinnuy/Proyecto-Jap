@@ -48,7 +48,10 @@ var getJSONData = function(url){
 
 
 
-
+if(localStorage.getItem("Acceso") && (window.location.pathname === "/" || window.location.pathname === "/index.html" ||
+ window.location.pathname === "/Proyecto-Jap/" || window.location.pathname === "/Proyecto-Jap/index.html")){
+  window.location.href = "inicio.html";
+ }
 
 
 function onSignIn(){
@@ -77,6 +80,7 @@ function signOut() {
     localStorage.removeItem('Image URL:');
     localStorage.removeItem('Email:'); 
     localStorage.removeItem("EmailNormal");
+    localStorage.removeItem("UserProfileInofrmation");
     window.location.href = "index.html";
   });
 }
@@ -104,8 +108,14 @@ function userInfo(){
           var userButton = document.getElementById("dropdownMenuButton");
 
 
-          foto.setAttribute("src", "./img/avatar2.png");
-          userButton.innerHTML = userName;
+          if(localStorage.getItem("UserProfileInofrmation")){
+            let userInformation = JSON.parse(localStorage.getItem("UserProfileInofrmation"));
+            foto.setAttribute("src", userInformation.profilePhoto);
+            userButton.innerHTML = userName;
+          }else{
+            foto.setAttribute("src", "img/avatar2.png");
+            userButton.innerHTML = userName;
+          }
         }else{
 
             var foto = document.getElementById("userAvatar");
@@ -115,15 +125,23 @@ function userInfo(){
             var userEmail =  localStorage.getItem('Email:'); 
 
 
-        foto.setAttribute("src", profilePhoto);
-        userButton.innerHTML = userName;
+        if(localStorage.getItem("UserProfileInofrmation")){
+          let userInformation = JSON.parse(localStorage.getItem("UserProfileInofrmation"));
+          foto.setAttribute("src", userInformation.profilePhoto);
+          userButton.innerHTML = userName;
+        }else{
+          foto.setAttribute("src", profilePhoto);
+          userButton.innerHTML = userName;
+        }
 
  }
 
 
 }
 
-userInfo();
+if(window.location.pathname != "/" && window.location.pathname != "/index.html" && window.location.pathname != "/Proyecto-Jap/" && window.location.pathname != "/Proyecto-Jap/index.html"){
+  userInfo()
+}
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los

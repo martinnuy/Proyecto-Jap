@@ -55,13 +55,169 @@
       </div>
     </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 7 (Fecha de entrega: 8/11/202020) -> Punto 1 y 2.</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
-    </div>
+  <div class="container p-5 fadeIn">
+    <div class="container">
+      <div class="row">
+      <div class="col-md-8 ">
+      
+      <form class="form-horizontal" onsubmit="return false">
+      <fieldset>
+      
+      <!-- Form Name -->
+      <h2>Informacion de Usuario</h2>
+      
+      <!-- Text input-->
+      
+      
+      <div class="form-group mb-1">
+        <label class="col-md-4 control-label" for="Name (Full name)">Nombre completo</label>  
+        <div class="col-md-8">
+       <div class="input-group shadow-lg">
+             <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>
+              </i>
+             </div>
+             <input id="inputName" name="Name" type="text" placeholder="Nombres" class="form-control input-md" required>
+            </div>
+      
+          
+        </div>
+      
+        
+      </div>
+      <div class="form-group">
+        <div class="col-md-8">
+       <div class="input-group shadow-lg">
+             <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1"><i class="fas fa-signature"></i></span>
+              </i>
+             </div>
+             <input id="inputLastName" name="LastName" type="text" placeholder="Apellidos" class="form-control input-md" required>
+            </div>
+      
+          
+        </div>
+      
+        
+      </div>
+      
+      
+      <!-- Text input-->
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="Date Of Birth">Fecha de nacimiento</label>  
+        <div class="col-md-8">
+      
+        <div class="input-group shadow-lg">
+             <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1"><i class="fa fa-birthday-cake"></i></span>
+           
+              
+             </div>
+             <input id="birthDate" name="Date Of Birth" type="date" placeholder="Fecha de nacimiento" class="form-control input-md" required>
+            </div>
+        
+          
+        </div>
+      </div>
+      
+  
+      
+      <!-- Text input-->
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="Phone number ">Numero telefonico</label>  
+        <div class="col-md-8">
+        <div class="input-group mb-2 shadow-lg">
+             <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1"><i class="fa fa-phone"></i></span>
+          
+              
+             </div>
+          <input id="phoneNumber" name="Phone" type="text" placeholder="Teléfono fijo " class="form-control input-md">
+          
+            </div>
+            <div class="input-group othertop shadow-lg">
+             <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1"><i class="fa fa-mobile fa-1x" style="font-size: 20px;"></i></span>
+           
+              
+             </div>
+          <input id="celNumber" name="Phone" type="text" placeholder=" Celular " class="form-control input-md">
+          
+            </div>
+        
+        </div>
+      </div>
+      
+      <!-- Text input-->
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="Email Address">Email</label>  
+        <div class="col-md-8">
+        <div class="input-group shadow-lg mb-5">
+             <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1"><i class="fa fa-envelope-o"></i></span>
+              
+             </div>
+          <input id="emailAddress" name="Email Address" type="text" placeholder="Email " class="form-control input-md" required>
+          
+            </div>
+        
+        </div>
+      </div>
+      
+      <!-- File Button --> 
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="Upload photo">Subir foto de Perfil</label>
+        <div class="col-md-8">
+          <input id="uploadPhoto" name="Upload photo" class="input-file" type="file">
+        </div>
+      </div>
+     
+      
+      
+      <div class="form-group">
+        <label class="col-md-4 control-label" ></label>  
+        <div class="col-md-8">
+        <button  class="btn btn-primary" id="submitButton" type="submit"><span class="glyphicon glyphicon-thumbs-up"></span>Guardar</button>
+          
+        </div>
+      </div>
+    
+
+      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <i class="fas fa-exclamation-triangle fa-7x col-md-5 marginForIcon mb-4 icon-color"></i>
+              <p class="text-center">Es necesario intrudicir un numero de teléfono fijo o celular.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      </fieldset>
+      </form>
+      </div>
+      
+      <div class="col-md-4 hidden-xs">
+      <img src="" class="img-responsive rounded-circle img-fluid shadow-lg fadeIn profileImgHover" id="profilePhoto" width="318px" height="318px" crossorigin>
+        <h3 class="text-center mt-3 fadeIn d-none" id="showName"></h3>
+        <h4 class="text-center fadeIn d-none" id="showAge"></h4>
+        <h4 class="text-center fadeIn d-none" id="showNumber"></h4>
+        <h4 class="text-center fadeIn d-none" id="showEmail"></h4>
+        </div>
+      
+      
+      </div>
+         </div>
+        
   </div>
   <footer class="text-muted bg-light">
     <div class="container">
