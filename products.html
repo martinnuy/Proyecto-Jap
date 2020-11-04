@@ -16,13 +16,19 @@
     <link  rel="icon"   href="img/favicon.ico" type="image/ico" />
   </head>
   <body>
-    <nav class="site-header sticky-top py-1 bg-dark">
-      <div class="container d-flex flex-column flex-md-row justify-content-between">
-        <a class="py-2 d-none d-md-inline-block" href="inicio.html">Inicio</a>
-        <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
-        <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
-        <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-        <div class="dropdown">
+    <nav class="site-header sticky-top py-1 bg-dark navbar navbar-expand-lg navbar-dark bg-dark">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="container">
+        <div class="row" id="linksNav">
+        <a class="py-2 nav-link  col-sm-2 m-auto" href="inicio.html" id="inicioButtonNav">Inicio</a>
+        <a class="py-2 nav-link  col-sm-2 m-auto" href="categories.html">Categorías</a>
+        <a class="py-2 nav-link  col-sm-2 m-auto" href="products.html">Productos</a>
+        <a class="py-2 nav-link  col-sm-2 m-auto" href="sell.html">Vender</a>
+        
+        <div class="dropdown p-0  m-auto row" id="dropdownProfile">
           <img src="./img/avatar2.png" class="rounded-circle" alt="" width="42" height="42" id="userAvatar">
           <button class="btn btn-secondary dropdown-toggle " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Usuario
@@ -33,6 +39,9 @@
             <a class="dropdown-item" href="#" onclick="sigOutDelay();"><i class="fas fa-sign-out-alt mr-2"></i>Cerrar Sesion</a>
           </div>
         </div>
+        </div>
+        
+      </div>
       </div>
     </nav>
     <h1 class="text-center mt-5">Productos</h1>

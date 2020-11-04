@@ -7,6 +7,25 @@ var maxCount = undefined;
 var categoriesArray = [];
 var categoriesArrayClean = [];
 
+
+function contador(){
+        let navDivContainer = document.getElementById("linksNav");
+        let navDiv = document.getElementById("linksNav").getElementsByTagName("div")[0];
+        let navLinkInicio = document.getElementById("linksNav").getElementsByTagName("a")[0];
+
+    if(screen.width < 576 && document.getElementById("linksNav").getElementsByTagName("a")[0] === document.getElementById("inicioButtonNav")){
+        navDivContainer.insertBefore(navDiv, navLinkInicio);
+        document.getElementById("dropdownProfile").className += " col-md-2 pt-2 pl-2";
+    }else if(screen.width > 576 && document.getElementById("linksNav").getElementsByTagName("a")[0] != document.getElementById("inicioButtonNav")){
+        navDivContainer.appendChild(navDiv);
+        document.getElementById("dropdownProfile").className = "dropdown p-0  m-auto row";
+    }
+}
+
+
+setInterval('contador()', 500);
+
+
 function showCategoriesList(array){
 
     let htmlContentToAppend = "";
